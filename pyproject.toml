@@ -1,0 +1,60 @@
+[project]
+name = "document-manager"
+version = "0.1.0"
+description = "Gerenciador de Documentos"
+authors = [
+    {name = "Matheus Kepy",email = "matheuskdev@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+]
+
+[tool.poetry]
+packages = [
+    { include = "src" }
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.4.1"
+isort = "^6.0.1"
+flake8 = "^7.3.0"
+black = "^25.1.0"
+
+[tool.pytest.ini_options]
+pythonpath = "." # Note: string value required
+
+[tool.isort]
+profile = "black"
+line_length = 79
+skip = ["manage.py", "venv"]
+
+[tool.blue]
+exclude = ["manage.py", "venv"]
+
+[tool.black]
+line-length = 79
+include = '\.pyi?$'
+exclude = '''
+/(
+  \.git
+ | \.hg
+ | \.mypy_cache
+ | \.tox
+ | \.venv
+ | venv
+ | _build
+ | buck-out
+ | build
+ | settings\.py
+ | migrations
+ )/
+'''
+
+[tool.flake8]
+max-line-length = 79
+exclude = ["manage.py", "venv"]
