@@ -34,3 +34,41 @@ class DocumentUpdatedEvent(DomainEvent):
                 "new_value": str(new_value),
             },
         )
+
+
+class DocumentCreatedEvent(DomainEvent):
+    """Evento disparado quando um documento é criado.
+
+    Args:
+        document_id (UUID): ID do documento criado.
+        user_id (UUID): ID do usuário que criou o documento.
+        document_type (str): Tipo do documento criado.
+    """
+
+    def __init__(self, document_id: UUID, user_id: UUID, document_type: str):
+        super().__init__(
+            event_type="document_created",
+            data={
+                "document_id": str(document_id),
+                "user_id": str(user_id),
+                "document_type": str(document_type),
+            },
+        )
+
+
+class DocumentDeletedEvent(DomainEvent):
+    """Evento disparado quando um documento é deletado.
+
+    Args:
+        document_id (UUID): ID do documento deletado.
+        user_id (UUID): ID do usuário que deletou o documento.
+    """
+
+    def __init__(self, document_id: UUID, user_id: UUID):
+        super().__init__(
+            event_type="document_deleted",
+            data={
+                "document_id": str(document_id),
+                "user_id": str(user_id),
+            },
+        )
