@@ -75,6 +75,7 @@ def test_entity_equality_and_hashing():
     assert hash(entity1) == hash(entity2)
     assert hash(entity1) != hash(entity3)
 
+
 def test_entity_equality():
     """Testa a igualdade de entidades com o mesmo ID."""
     id_ = uuid4()

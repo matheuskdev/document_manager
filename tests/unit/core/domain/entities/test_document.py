@@ -1,6 +1,7 @@
 "Testes unitários para a entidade Document."
-from datetime import datetime
+
 import time
+from datetime import datetime
 from uuid import UUID, uuid4
 
 import pytest
@@ -65,6 +66,7 @@ def test_document_update_attribute(
     assert docs.title == "Updated Title"
     assert docs.updated_at > docs.created_at
 
+
 def test_document_update_invalid_attribute(
     docs,
 ):  # pylint: disable=redefined-outer-name
@@ -72,12 +74,14 @@ def test_document_update_invalid_attribute(
     with pytest.raises(AttributeError):
         docs.update("invalid_attr", "New Value", DocumentUpdatedEvent)
 
+
 def test_document_update_invalid_type(
     docs,
 ):  # pylint: disable=redefined-outer-name
     """Testa a atualização de um atributo com tipo inválido."""
     with pytest.raises(TypeError):
         docs.update("title", 123, DocumentUpdatedEvent)
+
 
 def test_document_add_domain_event(
     docs,
@@ -88,11 +92,12 @@ def test_document_add_domain_event(
         docs.user_id,
         "Old Title",
         "New Title",
-        docs.document_type.value
+        docs.document_type.value,
     )
     docs.add_domain_event(event)
     assert len(docs.get_domain_events()) == 1
     assert docs.get_domain_events()[0] == event
+
 
 def test_document_clear_domain_events(
     docs,
@@ -103,7 +108,7 @@ def test_document_clear_domain_events(
         docs.user_id,
         "Old Title",
         "New Title",
-        docs.document_type.value
+        docs.document_type.value,
     )
     docs.add_domain_event(event)
     assert len(docs.get_domain_events()) == 1
