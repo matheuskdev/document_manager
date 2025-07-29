@@ -5,6 +5,10 @@ from uuid import UUID
 
 from src.core.domain.entities.base import Entity
 from src.core.domain.events.document import DocumentUpdatedEvent
+from src.core.domain.exceptions import (
+    DocumentUpdateAttrException,
+    DocumentUpdateTypeException,
+)
 from src.core.domain.value_objects.doc_types import DocumentType
 
 
@@ -51,14 +55,14 @@ class Document(Entity):
         obj_property = attr
 
         if not hasattr(self, obj_property):
-            raise AttributeError(
+            raise DocumentUpdateAttrException(
                 f"<{self.__class__.__name__}> não tem o atributo <{attr}>"
             )
 
         old_value = getattr(self, obj_property)
 
         if not isinstance(new_value, type(old_value)):
-            raise TypeError(
+            raise DocumentUpdateTypeException(
                 f"Tipo de dado inválido para o atributo: <{attr}>. "
                 f"Esperado: <{type(old_value).__name__}>, "
                 f"Recebido: <{type(new_value).__name__}>"
