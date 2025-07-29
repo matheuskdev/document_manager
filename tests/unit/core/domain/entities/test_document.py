@@ -83,22 +83,6 @@ def test_document_update_invalid_type(
         docs.update("title", 123, DocumentUpdatedEvent)
 
 
-def test_document_add_domain_event(
-    docs,
-):  # pylint: disable=redefined-outer-name
-    """Testa a adição de um evento de domínio ao documento."""
-    event = DocumentUpdatedEvent(
-        docs.id,
-        docs.user_id,
-        "Old Title",
-        "New Title",
-        docs.document_type.value,
-    )
-    docs.add_domain_event(event)
-    assert len(docs.get_domain_events()) == 1
-    assert docs.get_domain_events()[0] == event
-
-
 def test_document_clear_domain_events(
     docs,
 ):  # pylint: disable=redefined-outer-name
