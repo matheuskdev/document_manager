@@ -114,3 +114,11 @@ def test_document_clear_domain_events(
     assert len(docs.get_domain_events()) == 1
     docs.clear_domain_events()
     assert not docs.get_domain_events()
+
+
+def test_document_str_representation(
+    docs,
+):  # pylint: disable=redefined-outer-name
+    """Testa a representação em string do documento."""
+    expected = f"Document(id={docs.id}, document_type={docs.document_type})"
+    assert str(docs) == expected

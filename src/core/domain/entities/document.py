@@ -32,10 +32,7 @@ class Document(Entity):
         self.user_id = user_id
 
     def __str__(self):
-        return f"Document(id={self.id}, title={self.document_type})"
-
-    def __repr__(self):
-        return f"Document(id={self.id}, title={self.document_type})"
+        return f"Document(id={self.id}, document_type={self.document_type})"
 
     def update(
         self, attr: str, new_value: Any, event_update: DocumentUpdatedEvent

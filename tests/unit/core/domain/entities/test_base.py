@@ -81,5 +81,8 @@ def test_entity_equality():
     id_ = uuid4()
     entity1 = DummyEntity(id_)
     entity2 = DummyEntity(id_)
+    entity3 = DummyEntity()
 
     assert entity1 == entity2
+    assert entity1 != entity3
+    assert entity1 != "string"
