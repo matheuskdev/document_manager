@@ -19,11 +19,11 @@ class CreateDocumentUseCase(UseCase):
         """Executa o caso de uso para criar um documento."""
 
         service.validate(document)
-        document = repository.save(document)
+        saved_document = repository.save(document)
 
         event = DocumentCreatedEvent(
             document.id, document.user_id, document.document_type.value
         )
         document.add_domain_event(event)
 
-        return document
+        return saved_document
