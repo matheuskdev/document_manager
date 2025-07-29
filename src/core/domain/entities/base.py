@@ -2,7 +2,7 @@
 
 from abc import ABC
 from datetime import datetime
-from typing import Any
+from typing import Any, Optional
 from uuid import UUID, uuid4
 
 
@@ -31,7 +31,7 @@ class Entity(ABC):
         Se não fornecido, um novo UUID é gerado.
     """
 
-    def __init__(self, entity_id: UUID = None):
+    def __init__(self, entity_id: Optional[UUID] = None):
         self._id = entity_id or uuid4()
         self._domain_events: list[DomainEvent] = []
         self._created_at = datetime.now()
