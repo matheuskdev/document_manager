@@ -17,7 +17,7 @@ class DocumentUpdateAttrException(AttributeError):
     """Exceção lançada quando ocorre um erro ao atualizar um documento."""
 
 
-class DocumentUpdateTypeException(TypeError):
+class DocumentTypeException(TypeError):
     """
     Exceção lançada quando o tipo de dado do atributo a ser atualizado
     é inválido.

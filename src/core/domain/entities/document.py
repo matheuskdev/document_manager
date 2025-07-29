@@ -6,8 +6,8 @@ from uuid import UUID
 from src.core.domain.entities.base import Entity
 from src.core.domain.events.document import DocumentUpdatedEvent
 from src.core.domain.exceptions import (
+    DocumentTypeException,
     DocumentUpdateAttrException,
-    DocumentUpdateTypeException,
 )
 from src.core.domain.value_objects.doc_types import DocumentType
 
@@ -62,7 +62,7 @@ class Document(Entity):
         old_value = getattr(self, obj_property)
 
         if not isinstance(new_value, type(old_value)):
-            raise DocumentUpdateTypeException(
+            raise DocumentTypeException(
                 f"Tipo de dado inválido para o atributo: <{attr}>. "
                 f"Esperado: <{type(old_value).__name__}>, "
                 f"Recebido: <{type(new_value).__name__}>"
