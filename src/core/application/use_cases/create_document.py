@@ -1,6 +1,6 @@
 """Use case para criar um documento."""
 
-from core.application.services.base import IDocumentService
+from src.core.application.services.base import IDocumentService
 from src.core.application.use_cases.base import UseCase
 from src.core.domain.entities.document import Document
 from src.core.domain.events.document import DocumentCreatedEvent
