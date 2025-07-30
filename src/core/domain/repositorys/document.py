@@ -11,7 +11,7 @@ class IDocumentRepository(ABC):
     """Interface para o repositório de documentos."""
 
     @abstractmethod
-    def save(self, document: Document) -> None:
+    def save(self, document: Document) -> Document:
         """Adiciona um documento ao repositório."""
         raise NotImplementedError
 
@@ -21,7 +21,7 @@ class IDocumentRepository(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def update(self, document: Document) -> None:
+    def update(self, document: Document) -> Document:
         """Atualiza um documento no repositório."""
         raise NotImplementedError
 
