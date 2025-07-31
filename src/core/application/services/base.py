@@ -5,7 +5,7 @@ from abc import ABC, abstractmethod
 from src.core.domain.entities.document import Document
 
 
-class IDocumentService():
+class IDocumentService(ABC):
     """Interface para o serviço de documentos."""
 
     @abstractmethod
