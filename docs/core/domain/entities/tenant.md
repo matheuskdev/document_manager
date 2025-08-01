@@ -1,0 +1,1 @@
+::: src.core.domain.entities.tenant.Tenant

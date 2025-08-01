@@ -1,0 +1,34 @@
+site_name: Documents Manager
+edit_uri: docs
+
+nav:
+  - Home: index.md
+  - Core:
+    - Domínio:
+      - Entidade:
+        - Entidade Base(Entity): core/domain/entities/base_entity.md
+        - Entidade Base de Evento de Domínio(DomainEvent): core/domain/entities/base_domain_entity.md
+        - Entidade de Multi-Empresa(Tenant): core/domain/entities/tenant.md
+
+theme:
+  name: material
+  language: pt-BR
+  logo: assets/logo.png
+  favicon: assets/logo.png
+
+markdown_extensions:
+  - attr_list
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: ["."]
+          options:
+            show_source: true
+            docstring_style: google
+            merge_init_into_class: true
+          
+extra_css: []
+extra_javascript: []

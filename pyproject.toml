@@ -27,6 +27,12 @@ black = "^25.1.0"
 pytest-cov = "^6.2.1"
 taskipy = "^1.14.1"
 
+
+[tool.poetry.group.doc.dependencies]
+mkdocs = "^1.6.1"
+mkdocstrings = {extras = ["python"], version = "^0.30.0"}
+mkdocs-material = "^9.6.16"
+
 [tool.pytest.ini_options]
 pythonpath = "." # Note: string value required
 
