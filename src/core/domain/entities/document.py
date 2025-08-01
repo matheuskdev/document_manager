@@ -70,7 +70,6 @@ class Document(Entity):
         """Retorna o ID do usuário que criou o documento."""
         return self._user_id
 
-
     def __str__(self):
         return (
             f"Document(id={self.id}, document_type={self.document_type.value})"

@@ -6,15 +6,13 @@ from typing import Any, Optional
 from uuid import UUID, uuid4
 
 
-
-
 class DomainEvent:
     """
     Evento de domínio base.
 
     Cada evento possui um tipo, dados associados,
     momento de ocorrência e um identificador único.
-    
+
     Attributes:
         event_type (str): Tipo do evento.
         data (dict[str, Any]): Dados do evento.
@@ -40,7 +38,7 @@ class Entity(ABC):
     """
     Entidade base do domínio.
 
-    Cada entidade possui um identificador único, 
+    Cada entidade possui um identificador único,
     timestamps de criação/atualização e pode acumular eventos de domínio.
 
     Attributes:
@@ -54,7 +52,7 @@ class Entity(ABC):
         Inicializa uma nova entidade.
 
         Args:
-            entity_id (UUID, optional): ID da entidade. 
+            entity_id (UUID, optional): ID da entidade.
             Um novo UUID será gerado se não fornecido.
         """
         self._id: UUID = entity_id or uuid4()

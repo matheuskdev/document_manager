@@ -1,6 +1,5 @@
 """Entidade para Multi-Empresa."""
 
-
 from datetime import datetime
 from uuid import UUID
 
@@ -17,14 +16,14 @@ class Tenant:
     """
 
     def __init__(
-            self,
-            tenant_id: UUID,
-            name: str,
-            description: str,
-            created_at: datetime,
-            updated_at: datetime,
-            logo: str
-        ):
+        self,
+        tenant_id: UUID,
+        name: str,
+        description: str,
+        created_at: datetime,
+        updated_at: datetime,
+        logo: str,
+    ):
         self._tenant_id = tenant_id
         self.name = name
         self.description = description
