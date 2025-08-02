@@ -24,6 +24,7 @@ class Tenant(Entity):
         name: str,
         description: str,
         logo: str,
+        user_id:UUID,
         is_active: bool = True,
         entity_id: Optional[UUID] = None,
         created_at: Optional[datetime] = None,
@@ -33,6 +34,7 @@ class Tenant(Entity):
         self.name = name
         self.description = description
         self.logo = logo
+        self.user_id = user_id
         self.is_active: bool = is_active
 
     @property
@@ -43,7 +45,7 @@ class Tenant(Entity):
     @property
     def name(self) -> str:
         """Retorna o nome da empresa."""
-        return self.name
+        return self._name
 
     @name.setter
     def name(self, value: str):
@@ -60,7 +62,7 @@ class Tenant(Entity):
             raise DomainValidationError(
                 "O nome da empresa não pode ter mais de 255 caracteres."
             )
-        self.name = value
+        self._name = value
 
     @property
     def description(self) -> str:
@@ -78,12 +80,12 @@ class Tenant(Entity):
             raise DomainValidationError(
                 "A descrição da empresa não pode ter mais de 1000 caracteres."
             )
-        self.description = value
+        self._description = value
 
     @property
     def logo(self) -> str:
         """Retorna o logo da empresa."""
-        return self.logo
+        return self._logo
 
     @logo.setter
     def logo(self, value: str):
@@ -92,7 +94,22 @@ class Tenant(Entity):
             raise DomainValidationError(
                 "O logo da empresa não pode ser vazio."
             )
-        self.logo = value
+        self._logo = value
+
+    @property
+    def user_id(self) -> UUID:
+        """ID do usuário associado ao tenant."""
+        return self._user_id
+
+    @user_id.setter
+    def user_id(self, value: UUID) -> None:
+        """Define o ID do usuário associado ao tenant."""
+        if not isinstance(value, UUID):
+            raise DomainValidationError(
+                "O ID do usuário deve ser um UUID válido."
+            )
+        self._user_id = value
+
 
     @property
     def is_active(self) -> bool:
@@ -106,11 +123,11 @@ class Tenant(Entity):
 
     def activate(self) -> None:
         """Ativa o tenant."""
-        self.is_active = True
+        self._is_active = True
 
     def deactivate(self) -> None:
         """Desativa o tenant."""
-        self.is_active = False
+        self._is_active = False
 
     def __str__(self):
         return f"Tenant(id={self.entity_id})"
