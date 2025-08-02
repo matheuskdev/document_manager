@@ -24,7 +24,7 @@ class Tenant(Entity):
         name: str,
         description: str,
         logo: str,
-        user_id:UUID,
+        user_id: UUID,
         is_active: bool = True,
         entity_id: Optional[UUID] = None,
         created_at: Optional[datetime] = None,
@@ -109,7 +109,6 @@ class Tenant(Entity):
                 "O ID do usuário deve ser um UUID válido."
             )
         self._user_id = value
-
 
     @property
     def is_active(self) -> bool:

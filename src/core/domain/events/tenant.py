@@ -17,11 +17,7 @@ class TenantUpdatedEvent(DomainEvent):
     """
 
     def __init__(
-        self,
-        tenant_id: UUID,
-        user_id: UUID,
-        old_value: Any,
-        new_value: Any
+        self, tenant_id: UUID, user_id: UUID, old_value: Any, new_value: Any
     ):
         super().__init__(
             event_type="tenant_updated",
