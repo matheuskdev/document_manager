@@ -17,6 +17,8 @@ def create_mock_document() -> Document:
     return Document(
         title="Doc Teste",
         document_type=DocumentType.REPORT,
+        entity_id=uuid4(),
+        tenant_id=uuid4(),
         user_id=uuid4(),
     )
 
