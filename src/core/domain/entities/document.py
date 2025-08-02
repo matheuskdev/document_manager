@@ -64,14 +64,26 @@ class Document(Entity):
         """Define o título do documento,
         garantindo que não seja vazio.
         """
-        if not value:
+        if not value or not value.strip():
             raise ValueError("O título do documento não pode ser vazio.")
+        if len(value) < 2:
+            raise ValueError(
+                "O título do documento deve ter pelo menos 2 caracteres."
+            )
+
         self._title = value
 
     @property
     def user_id(self) -> UUID:
         """Retorna o ID do usuário que criou o documento."""
-        return self.user_id
+        return self._user_id
+
+    @user_id.setter
+    def user_id(self, value: UUID):
+        """Define o ID do usuário que criou o documento."""
+        if not isinstance(value, UUID):
+            raise ValueError("O ID do usuário deve ser um UUID válido.")
+        self._user_id = value
 
     @property
     def version(self) -> int:
@@ -204,6 +216,14 @@ class Document(Entity):
 
         if old_value == new_value:
             return
+
+        if not isinstance(new_value, type(old_value)):
+            raise DocumentUpdateAttrException(
+                f"Não é possível atualizar '{attr}'. \n"
+                f"Os tipos não são compatíveis.\n"
+                f"Novo valor: {type(new_value)}, \n"
+                f"Valor antigo: {type(old_value)} \n"
+            )
 
         try:
             setattr(self, attr, new_value)
