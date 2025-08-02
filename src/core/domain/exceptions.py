@@ -22,3 +22,7 @@ class DocumentTypeException(TypeError):
     Exceção lançada quando o tipo de dado do atributo a ser atualizado
     é inválido.
     """
+
+
+class DomainValidationError(Exception):
+    """Exceção lançada para erros de validação de domínio."""
