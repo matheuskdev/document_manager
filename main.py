@@ -25,8 +25,3 @@ except AttributeError as e:
     print(f"[AtributeError]: {e}")
 except TypeError as e:
     print(f"[TypeError]: {e}")
-
-
-print(doc.title)
-print(type(doc.title))
-print(doc)
