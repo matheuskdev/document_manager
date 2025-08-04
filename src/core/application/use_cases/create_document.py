@@ -22,7 +22,7 @@ class CreateDocumentUseCase(UseCase):
         saved_document = repository.save(document)
 
         event = DocumentCreatedEvent(
-            document.id, document.user_id, document.document_type.value
+            document.entity_id, document.user_id, document.document_type.value
         )
         document.add_domain_event(event)
 

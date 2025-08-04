@@ -18,4 +18,3 @@ class UseCase(ABC):
         document: Document,
     ) -> Document:
         """Método que executa o caso de uso."""
-        raise NotImplementedError
