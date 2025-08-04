@@ -11,4 +11,3 @@ class IDocumentService(ABC):
     @abstractmethod
     def validate(self, document: Document) -> None:
         """Valida um documento."""
-        raise NotImplementedError
