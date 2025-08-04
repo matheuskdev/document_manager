@@ -38,9 +38,9 @@ class Document(Entity):
         title: str,
         user_id: UUID,
         document_type: DocumentType,
+        tenant_id: UUID,
         version: int = 1,
         status: DocumentStatus = DocumentStatus.DRAFT,
-        tenant_id: UUID = None,
         entity_id: UUID = None,
         created_at: datetime = None,
         updated_at: datetime = None,
@@ -132,7 +132,8 @@ class Document(Entity):
         """
         if not isinstance(value, DocumentStatus):
             raise DomainValidationError(
-                "O status do documento deve ser uma instância de DocumentStatus."
+                "O status do documento "
+                "deve ser uma instância de DocumentStatus."
             )
         self._status = value
 
@@ -215,6 +216,11 @@ class Document(Entity):
             raise DocumentUpdateAttrException(
                 f"A entidade '{self.__class__.__name__}'"
                 f"não tem o atributo '{attr}'."
+            )
+
+        if not isinstance(user_id_modifier, UUID):
+            raise DocumentUpdateAttrException(
+                "O user_id_modifier deve ser um UUID válido."
             )
 
         old_value = getattr(self, attr)
