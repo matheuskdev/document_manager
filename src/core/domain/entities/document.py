@@ -7,7 +7,6 @@ from uuid import UUID
 from src.core.domain.entities.base import Entity
 from src.core.domain.events.document import DocumentUpdatedEvent
 from src.core.domain.exceptions import (
-    DocumentTypeException,
     DocumentUpdateAttrException,
     DomainValidationError,
 )
@@ -65,9 +64,11 @@ class Document(Entity):
         garantindo que não seja vazio.
         """
         if not value or not value.strip():
-            raise ValueError("O título do documento não pode ser vazio.")
+            raise DomainValidationError(
+                "O título do documento não pode ser vazio."
+            )
         if len(value) < 2:
-            raise ValueError(
+            raise DomainValidationError(
                 "O título do documento deve ter pelo menos 2 caracteres."
             )
 
@@ -82,7 +83,9 @@ class Document(Entity):
     def user_id(self, value: UUID):
         """Define o ID do usuário que criou o documento."""
         if not isinstance(value, UUID):
-            raise ValueError("O ID do usuário deve ser um UUID válido.")
+            raise DomainValidationError(
+                "O ID do usuário deve ser um UUID válido."
+            )
         self._user_id = value
 
     @property
@@ -96,7 +99,7 @@ class Document(Entity):
         garantindo que seja um número positivo.
         """
         if not isinstance(value, int) or value < 1:
-            raise ValueError(
+            raise DomainValidationError(
                 "A versão do documento deve ser um número positivo."
             )
         self._version = value
@@ -112,7 +115,7 @@ class Document(Entity):
         garantindo que seja uma instância de DocumentType.
         """
         if not isinstance(value, DocumentType):
-            raise DocumentTypeException(
+            raise DomainValidationError(
                 "O tipo de documento deve ser uma instância de DocumentType."
             )
         self._document_type = value
@@ -128,7 +131,7 @@ class Document(Entity):
         garantindo que seja uma instância de DocumentStatus.
         """
         if not isinstance(value, DocumentStatus):
-            raise DocumentTypeException(
+            raise DomainValidationError(
                 "O status do documento deve ser uma instância de DocumentStatus."
             )
         self._status = value
@@ -142,7 +145,7 @@ class Document(Entity):
     def tenant_id(self, value: UUID):
         """Define o ID da empresa associada ao documento."""
         if not isinstance(value, UUID):
-            raise DocumentTypeException(
+            raise DomainValidationError(
                 "O ID da empresa deve ser um UUID válido."
             )
         self._tenant_id = value
@@ -193,11 +196,13 @@ class Document(Entity):
 
     def __str__(self):
         return (
-            f"Document(id={self.entity_id}, "
-            f"document_type={self.document_type.value}, "
-            f"status={self.status.value}, "
-            f"tenant_id={self.tenant_id}) "
-            f"version={self.version}"
+            f"\n"
+            f"Informações do Documento:\n"
+            f"Document(id={self.entity_id},\n"
+            f"document_type={self.document_type.value},\n"
+            f"status={self.status.value},\n"
+            f"tenant_id={self.tenant_id}) \n"
+            f"version={self.version}\n"
         )
 
     def update_attribute(
