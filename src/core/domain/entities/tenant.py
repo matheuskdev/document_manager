@@ -40,7 +40,7 @@ class Tenant(Entity):
     @property
     def entity_id(self) -> UUID:
         """Retorna o ID da empresa."""
-        return self.entity_id
+        return self._entity_id
 
     @property
     def name(self) -> str:
@@ -67,7 +67,7 @@ class Tenant(Entity):
     @property
     def description(self) -> str:
         """Retorna a descrição da empresa."""
-        return self.description
+        return self._description
 
     @description.setter
     def description(self, value: str):
