@@ -1,0 +1,1 @@
+::: src.core.domain.value_objects.doc_status.DocumentStatus

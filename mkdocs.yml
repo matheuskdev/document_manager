@@ -9,7 +9,16 @@ nav:
         - Entidade Base(Entity): core/domain/entities/base_entity.md
         - Entidade Base de Evento de Domínio(DomainEvent): core/domain/entities/base_domain_entity.md
         - Entidade de Multi-Empresa(Tenant): core/domain/entities/tenant.md
-
+        - Entidade Base de Documentos(Document): core/domain/entities/document.md
+      - Eventos de Domínio:
+        - Documentos(Document): core/domain/events/document.md
+        - Multi-Empresa(Tenant): core/domain/events/tenant.md
+      - Repositórios:
+        - Repositório de Multi-Empresa(Tenant): core/domain/repositorys/tenant.md
+        - Repositório de Documentos(Document): core/domain/repositorys/document.md
+      - Objetos de Valor:
+        - Objeto de valor de Documentos(Status): core/domain/value_objects/doc_status.md
+        - Objeto de valor de Documentos(Tipo): core/domain/value_objects/doc_types.md
 theme:
   name: material
   language: pt-BR
@@ -27,6 +36,9 @@ plugins:
           paths: ["."]
           options:
             show_source: true
+            show_root_heading: true
+            show_root_full_path: false
+            show_signature: false
             docstring_style: google
             merge_init_into_class: true
           

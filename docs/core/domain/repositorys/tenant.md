@@ -1,0 +1,1 @@
+::: src.core.domain.repositorys.tenant.ITenantRepository
