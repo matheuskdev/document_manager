@@ -118,6 +118,10 @@ class Tenant(Entity):
     @is_active.setter
     def is_active(self, value: bool) -> None:
         """Define o status de ativação do tenant."""
+        if not isinstance(value, bool):
+            raise DomainValidationError(
+                "O status de ativação deve ser booleano."
+            )
         self._is_active = bool(value)
 
     def activate(self) -> None:
@@ -129,4 +133,7 @@ class Tenant(Entity):
         self._is_active = False
 
     def __str__(self):
-        return f"Tenant(id={self.entity_id})"
+        return (
+            f"Tenant(id={self.entity_id}),\n"
+            f"name={self.name}, active={self.is_active})"
+        )
