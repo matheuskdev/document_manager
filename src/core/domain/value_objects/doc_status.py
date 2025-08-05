@@ -4,7 +4,14 @@ from enum import Enum
 
 
 class DocumentStatus(Enum):
-    """Status de um Documento."""
+    """Status de um Documento.
+    
+    Values:
+        DRAFT: Documento em rascunho.
+        PUBLISHED: Documento publicado.
+        ARCHIVED: Documento arquivado.
+        DELETED: Documento excluído.
+    """
 
     DRAFT = "Rascunho"
     PUBLISHED = "Publicado"
