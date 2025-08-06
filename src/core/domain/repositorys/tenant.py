@@ -52,3 +52,7 @@ class ITenantRepository(ABC):
     @abstractmethod
     def get_inactives(self) -> list[Tenant]:
         """Obtém empresas inativas."""
+
+    @abstractmethod
+    def exists_by_name(self, name: str) -> bool:
+        """Verifica se uma empresa existe pelo nome."""
