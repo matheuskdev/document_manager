@@ -26,3 +26,7 @@ class DocumentTypeException(TypeError):
 
 class DomainValidationError(Exception):
     """Exceção lançada para erros de validação de domínio."""
+
+
+class BusinessRuleViolationError(Exception):
+    """Exceção lançada quando uma regra de negócio é violada."""
