@@ -1,8 +1,9 @@
 """Use Case para criar uma empresa (tenant)."""
-from src.core.domain.exceptions import BusinessRuleViolationError
+
 from src.core.domain.entities.tenant import Tenant
-from src.core.domain.repositorys.tenant import ITenantRepository
 from src.core.domain.events.tenant import TenantCreatedEvent
+from src.core.domain.exceptions import BusinessRuleViolationError
+from src.core.domain.repositorys.tenant import ITenantRepository
 
 
 class CreateTenantUseCase:

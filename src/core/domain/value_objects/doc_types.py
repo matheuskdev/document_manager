@@ -5,7 +5,7 @@ from enum import Enum
 
 class DocumentType(Enum):
     """Enumeração para tipos de documentos.
-    
+
     Values:
         REPORT: Relatório.
         CONTRACT: Contrato.
