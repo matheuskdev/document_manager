@@ -17,7 +17,7 @@ def tenant_repository_mock():
 
 @pytest.fixture
 def create_tenant_use_case(
-    tenant_repository_mock
+    tenant_repository_mock,
 ):  # pylint: disable=redefined-outer-name
     """Instância do Use Case de criação de tenant."""
     return CreateTenantUseCase(tenant_repository=tenant_repository_mock)
