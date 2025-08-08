@@ -1,6 +1,6 @@
 """Use Case para criar uma empresa (tenant)."""
 
-from src.core.application.services.base import IBaseService
+from src.core.application.services.tenant_service import TenantService
 from src.core.domain.entities.tenant import Tenant
 from src.core.domain.events.tenant import TenantCreatedEvent
 from src.core.domain.repositorys.tenant import ITenantRepository
@@ -12,7 +12,7 @@ class CreateTenantUseCase:
     def __init__(
         self,
         tenant_repository: ITenantRepository,
-        tenant_service: IBaseService,
+        tenant_service: TenantService,
     ):
         self._tenant_repository = tenant_repository
         self._tenant_service = tenant_service
