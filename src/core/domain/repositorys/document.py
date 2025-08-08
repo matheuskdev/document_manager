@@ -4,10 +4,11 @@ from abc import ABC, abstractmethod
 from uuid import UUID
 
 from src.core.domain.entities.document import Document
+from src.core.domain.repositorys.base import IRepository
 from src.core.domain.value_objects.doc_types import DocumentType
 
 
-class IDocumentRepository(ABC):
+class IDocumentRepository(IRepository):
     """Interface para o repositório de documentos."""
 
     @abstractmethod
