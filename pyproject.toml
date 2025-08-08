@@ -36,6 +36,23 @@ mkdocs-material = "^9.6.16"
 [tool.pytest.ini_options]
 pythonpath = "." # Note: string value required
 
+[tool.coverage.run]
+source = ["src"]
+omit = [
+    "*/tests/*",
+    "*/conftest.py",
+    "*/__init__.py"
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "if __name__ == .__main__.:",
+    "@abstractmethod",
+    "raise NotImplementedError"
+]
+show_missing = true
+
 [tool.isort]
 profile = "black"
 line_length = 79
