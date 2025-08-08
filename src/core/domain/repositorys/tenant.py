@@ -1,6 +1,6 @@
 """Repository para a entidade Tenant."""
 
-from abc import ABC, abstractmethod
+from abc import abstractmethod
 from uuid import UUID
 
 from src.core.domain.entities.tenant import Tenant
