@@ -1,6 +1,6 @@
 """Repository para a entidade Document."""
 
-from abc import ABC, abstractmethod
+from abc import abstractmethod
 from uuid import UUID
 
 from src.core.domain.entities.document import Document
