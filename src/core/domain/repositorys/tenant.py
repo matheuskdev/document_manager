@@ -4,9 +4,10 @@ from abc import ABC, abstractmethod
 from uuid import UUID
 
 from src.core.domain.entities.tenant import Tenant
+from src.core.domain.repositorys.base import IRepository
 
 
-class ITenantRepository(ABC):
+class ITenantRepository(IRepository):
     """Interface para o repositório de empresas."""
 
     @abstractmethod
